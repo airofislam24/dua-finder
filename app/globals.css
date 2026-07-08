@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/* -----------------------
+   Global Styles
+------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  background: #020617;
+  color: #f8fafc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #06b6d4;
+  color: white;
+}
+
+/* -----------------------
+   Scrollbar
+------------------------ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#0ea5e9, #06b6d4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0284c7;
+}
+
+/* -----------------------
+   Glass Blur
+------------------------ */
+
+.glass {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* -----------------------
+   Animations
+------------------------ */
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%,100% {
+    box-shadow: 0 0 15px rgba(34,211,238,.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34,211,238,.5);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp .8s ease forwards;
+}
+
+/* -----------------------
+   Buttons
+------------------------ */
+
+button {
+  transition: all .25s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+/* -----------------------
+   Inputs
+------------------------ */
+
+input {
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px rgba(14,165,233,.25);
+}
+
+/* -----------------------
+   Links
+------------------------ */
+
+a {
+  text-decoration: none;
+  transition: .25s;
+}
+
+a:hover {
+  opacity: .9;
+}
