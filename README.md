@@ -1,36 +1,183 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤲 Dua Finder
 
-## Getting Started
+> Find authentic Quran & Hadith duas for every emotion, situation, and moment in life.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+## 🌐 Live Demo
+
+🔗 https://dua-finder-puce.vercel.app/
+
+---
+
+## 📖 About
+
+Dua Finder is a modern Islamic web application that helps Muslims quickly discover authentic duas from the **Quran** and **Sunnah** based on their emotions, needs, or life situations.
+
+Whether you're feeling anxious, grateful, seeking forgiveness, preparing for exams, or asking for rizq, Dua Finder helps you find authentic supplications with translations and references.
+
+---
+
+## ✨ Features
+
+- 🤲 500+ Authentic Duas
+- 🔍 Smart Search
+- 📖 Quran & Hadith References
+- 🌍 English Translation
+- 📝 Transliteration
+- 💡 Context & Usage
+- 🎨 Beautiful Ocean-Inspired UI
+- 📱 Fully Responsive
+- ⚡ Built with Next.js 16
+- 🚀 Hosted on Vercel
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- Vercel
+- Vercel Analytics
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+├── page.tsx
+├── layout.tsx
+└── globals.css
+
+data/
+└── duas.json
+
+lib/
+└── dua.ts
+
+public/
+```
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository
+
+```bash
+git clone https://github.com/airofislam24/dua-finder.git
+```
+
+Go into the project
+
+```bash
+cd dua-finder
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📸 Preview
 
-To learn more about Next.js, take a look at the following resources:
+> *(Add screenshots here later)*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 Roadmap
 
-## Deploy on Vercel
+### Completed
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] Responsive Homepage
+- [x] Smart Search
+- [x] 500+ Authentic Duas
+- [x] Quran & Hadith References
+- [x] Beautiful UI
+- [x] Vercel Deployment
+- [x] Analytics
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Coming Soon
+
+- [ ] Audio Recitation
+- [ ] Daily Dua
+- [ ] Favorites
+- [ ] Share Dua
+- [ ] Copy Dua
+- [ ] Multiple Languages
+- [ ] AI Semantic Search
+- [ ] SEO Improvements
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you'd like to improve Dua Finder:
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## 📜 Disclaimer
+
+All duas are collected from authentic Islamic sources including the **Holy Quran** and **authentic books of Hadith**.
+
+This project is intended for educational and spiritual benefit. Users are encouraged to consult qualified scholars for detailed religious guidance and interpretation.
+
+---
+
+## ❤️ Support
+
+If you found this project beneficial, consider supporting it by following **Air Of Islam**.
+
+📺 YouTube
+
+https://www.youtube.com/@AIROFISLAM1
+
+📸 Instagram
+
+https://www.instagram.com/airofislam
+
+⭐ Star this repository if you found it useful.
+
+---
+
+## 👨‍💻 Author
+
+**Taha Raees Ghole**
+
+GitHub:
+https://github.com/airofislam24
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
