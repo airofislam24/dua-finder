@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Dua Finder | Find Authentic Quran & Hadith Duas",
   description:
     "Search over 500 authentic Islamic duas from the Quran and Sunnah by emotion, situation, or need.",
+    verification: {
+    google: "BIoHO-NQnzhTQTWviXppRUE3heXLlwvtg1yHFYVak-s",
+  },
 };
 
 export default function RootLayout({
