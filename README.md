@@ -1,3 +1,4 @@
+<img width="1917" height="895" alt="image" src="https://github.com/user-attachments/assets/a5c234d6-079e-4521-9873-ad0abe0d30ce" />
 # 🤲 Dua Finder
 
 > Find authentic Quran & Hadith duas for every emotion, situation, and moment in life.
