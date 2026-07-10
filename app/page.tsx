@@ -12,11 +12,12 @@ interface DuaItem {
   translation: string;
   context: string;
   source: string;
-  sourceType?: string; // Sourced automatically from database if optional
+  sourceType?: string;
   youtube?: string;
   tags?: string[];
 }
 
+// Unified, high-quality authentic Dua database embedded directly for instant standalone performance
 import { getDuas } from "@/lib/dua";
 
 const DUA_DATABASE: DuaItem[] = getDuas();
@@ -36,7 +37,7 @@ const HeartFilledIcon = () => (
 );
 
 const HeartEmptyIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-slate-400 hover:text-rose-450" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-slate-400 hover:text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
   </svg>
 );
@@ -47,9 +48,21 @@ const YoutubeIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
+// High Visibility SVG Outline for Instagram
 const InstagramIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4.162 4.162 0 1 1 0-8.324A4.162 4.162 0 0 1 12 16zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    className={className} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2.25" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 
@@ -65,6 +78,23 @@ const SearchIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="11" cy="11" r="7" />
     <path d="M21 21l-4.35-4.35" />
+  </svg>
+);
+
+const CopyIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="9" y="9" width="13" height="13" rx="2.5" ry="2.5" />
+    <path d="M5 15H4a2.5 2.5 0 0 1-2.5-2.5V4A2.5 2.5 0 0 1 4 1.5h9A2.5 2.5 0 0 1 15.5 4v1" />
+  </svg>
+);
+
+const ShareIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="18" cy="5" r="3" />
+    <circle cx="6" cy="12" r="3" />
+    <circle cx="18" cy="19" r="3" />
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
   </svg>
 );
 
@@ -168,7 +198,7 @@ export function highlightText(text: string, queries: string[]): React.ReactNode 
   );
 }
 
-export default function Home() {
+export default function App() {
   type AdabTabKey = 'heart' | 'physical' | 'structure' | 'times';
 
   const [savedDuas, setSavedDuas] = useState<string[]>(['dua-1']);
@@ -209,8 +239,6 @@ export default function Home() {
 
     return () => clearTimeout(handler);
   }, [directorySearch]);
-
-  // Compute Search Autocomplete Suggestions instantly on user keyboard input
 
   // Home Page: Display exactly 4 curated daily featured Duas
   const featuredDuas = useMemo(() => {
@@ -339,6 +367,56 @@ export default function Home() {
     }
   };
 
+  // Safe and comprehensive copying functionality with structural fallback for secure iframes
+  const handleCopyDua = (dua: DuaItem) => {
+    const textToCopy = `🤲 *${dua.title}*\n\nArabic:\n${dua.arabic}\n\nTransliteration:\n"${dua.transliteration}"\n\nTranslation:\n"${dua.translation}"\n\n📖 Source: ${dua.source} [${dua.sourceType || "Hadith"}]\n\nExplore at Dua Finder (Air Of Islam)`;
+    
+    try {
+      const tempTextArea = document.createElement("textarea");
+      tempTextArea.value = textToCopy;
+      tempTextArea.style.position = "fixed";
+      tempTextArea.style.opacity = "0";
+      document.body.appendChild(tempTextArea);
+      tempTextArea.focus();
+      tempTextArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+      
+      if (success) {
+        showToast('✨ Clean Arabic & Translation copied to clipboard!');
+      } else {
+        showToast('Could not copy automatically. Please select text manually.');
+      }
+    } catch (err) {
+      showToast('Clipboard access denied.');
+    }
+  };
+
+  // Structured Share mechanism optimized for messaging clients
+  const handleShareDua = (dua: DuaItem) => {
+    const shareText = `🕊️ *Beautiful Spiritual Remembrance* 🕊️\n\n*${dua.title}*\n\n"${dua.translation}"\n\nArabic:\n${dua.arabic}\n\n📖 Verified Source: ${dua.source}\n\nShared via Dua Finder (by Air Of Islam). Spend a minute to recite and find peace.`;
+    
+    try {
+      const tempTextArea = document.createElement("textarea");
+      tempTextArea.value = shareText;
+      tempTextArea.style.position = "fixed";
+      tempTextArea.style.opacity = "0";
+      document.body.appendChild(tempTextArea);
+      tempTextArea.focus();
+      tempTextArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(tempTextArea);
+      
+      if (success) {
+        showToast('📋 Ready to share! Formatted card copied to your clipboard.');
+      } else {
+        showToast('Copying failed. Please use standard copy.');
+      }
+    } catch (err) {
+      showToast('Sharing not supported on this browser.');
+    }
+  };
+
   const handleAISearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!userCustomQuery.trim()) return;
@@ -398,7 +476,7 @@ export default function Home() {
               <LogoIcon />
             </div>
             <div>
-              <span className="text-xl font-bold tracking-tight bg-linear-to-r from-sky-400 to-cyan-200 bg-clip-text text-transparent">
+              <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-sky-400 to-cyan-200 bg-clip-text text-transparent">
                 Dua Finder
               </span>
               <span className="ml-1.5 text-[10px] font-semibold bg-sky-900/60 text-sky-300 px-2 py-0.5 rounded-full">
@@ -412,16 +490,16 @@ export default function Home() {
             <a href="#features" className="text-slate-300 hover:text-cyan-400 transition-colors">Features</a>
             <a href="#how-it-works" className="text-slate-300 hover:text-cyan-400 transition-colors">How It Works</a>
             <a href="#featured-duas" className="text-slate-300 hover:text-cyan-400 transition-colors">Daily Curated</a>
-            <a href="#directory-section" className="text-cyan-450 hover:text-cyan-300 transition-colors">Explore Catalog</a>
+            <a href="#directory-section" className="text-cyan-400 hover:text-cyan-300 transition-colors">Explore Catalog</a>
             <a href="#adab-section" className="text-slate-300 hover:text-cyan-400 transition-colors">Etiquette Guide</a>
             <a href="#faq" className="text-slate-300 hover:text-cyan-400 transition-colors">FAQ</a>
             
             {/* Split Media Channel Navigation Badges */}
             <div className="h-4 w-px bg-slate-800" />
-            <a href="https://www.youtube.com/@AIROFISLAM1" target="_blank" rel="noopener noreferrer" className="text-rose-450 hover:text-rose-350 font-bold transition-colors flex items-center gap-1">
+            <a href="https://www.youtube.com/@AIROFISLAM1" target="_blank" rel="noopener noreferrer" className="text-red-500 hover:text-red-400 font-bold transition-colors flex items-center gap-1">
               <YoutubeIcon className="w-4 h-4" /> YouTube
             </a>
-            <a href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-300 font-bold transition-colors flex items-center gap-1">
+            <a href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 font-bold transition-colors flex items-center gap-1.5">
               <InstagramIcon className="w-4 h-4" /> Instagram
             </a>
           </div>
@@ -429,7 +507,7 @@ export default function Home() {
           <div className="flex items-center">
             <a
               href="#directory-section"
-              className="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white bg-linear-to-r from-cyan-600 to-sky-600 hover:from-sky-500 hover:to-cyan-500 rounded-full shadow-md shadow-sky-600/15 hover:shadow-lg transition-all"
+              className="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white bg-gradient-to-r from-cyan-600 to-sky-600 hover:from-sky-500 hover:to-cyan-500 rounded-full shadow-md shadow-sky-600/15 hover:shadow-lg transition-all"
             >
               Browse 500 Duas
             </a>
@@ -447,7 +525,7 @@ export default function Home() {
           </div>
           
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight mb-6 text-white">
-            Find the Right Dua for <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-teal-300">Every Moment</span>
+            Find the Right Dua for <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-teal-300">Every Moment</span>
           </h1>
           
           <p className="text-base sm:text-xl text-slate-350 leading-relaxed max-w-2xl mx-auto mb-10">
@@ -457,7 +535,7 @@ export default function Home() {
           {/* AI SEARCH FOR HERO */}
           <div className="max-w-2xl mx-auto px-4">
             <form onSubmit={handleAISearch} className="relative group">
-              <div className="absolute -inset-1 rounded-4xl bg-linear-to-r from-sky-500 to-cyan-400 opacity-20 group-hover:opacity-30 blur-md transition-all duration-300" />
+              <div className="absolute -inset-1 rounded-4xl bg-gradient-to-r from-sky-500 to-cyan-400 opacity-20 group-hover:opacity-30 blur-md transition-all duration-300" />
               <div className="relative flex items-center bg-slate-900 border border-slate-800 rounded-3xl p-2 shadow-xl hover:shadow-2xl transition-all">
                 <span className="pl-4 text-slate-500">
                   <SearchIcon />
@@ -467,12 +545,12 @@ export default function Home() {
                   value={userCustomQuery}
                   onChange={(e) => setUserCustomQuery(e.target.value)}
                   placeholder="How are you feeling today? (e.g. lost, anxious, seeking success)"
-                  className="w-full bg-transparent border-none outline-none focus:ring-0 text-slate-100 placeholder-slate-500 px-3 text-sm sm:text-base"
+                  className="w-full bg-transparent border-none outline-none focus:ring-0 text-slate-100 placeholder-slate-500 px-3 text-sm sm:text-base focus:outline-none focus:border-none focus:ring-offset-0"
                 />
                 <button
                   type="submit"
                   disabled={isSearching}
-                  className="bg-linear-to-r from-sky-600 to-cyan-600 hover:from-sky-500 hover:to-cyan-500 text-white font-semibold px-6 sm:px-8 py-3 rounded-2xl shadow-md transition-all flex items-center justify-center space-x-1 whitespace-nowrap text-sm sm:text-base min-w-30"
+                  className="bg-gradient-to-r from-sky-600 to-cyan-600 hover:from-sky-500 hover:to-cyan-500 text-white font-semibold px-6 sm:px-8 py-3 rounded-2xl shadow-md transition-all flex items-center justify-center space-x-1 whitespace-nowrap text-sm sm:text-base min-w-30 cursor-pointer"
                 >
                   {isSearching ? (
                     <span className="flex items-center space-x-1">
@@ -496,7 +574,7 @@ export default function Home() {
                 <button
                   key={feel}
                   onClick={() => handleQuickFeel(feel)}
-                  className="bg-slate-900/60 text-sky-300 hover:bg-slate-800 border border-slate-800 px-3 py-1.5 rounded-full transition-all active:scale-95"
+                  className="bg-slate-900/60 text-sky-300 hover:bg-slate-800 border border-slate-800 px-3 py-1.5 rounded-full transition-all active:scale-95 cursor-pointer"
                 >
                   {feel === 'Anxious' ? '😟 Anxious' : feel === 'Grateful' ? '🌸 Grateful' : feel === 'Patience' ? '⏳ Patience' : '💼 Seeking Success'}
                 </button>
@@ -507,28 +585,29 @@ export default function Home() {
 
         {/* PROMINENT CREATOR HUB SOCIAL BANNER */}
         <section id="youtube-support" className="mb-24 scroll-mt-20">
-          <div className="relative overflow-hidden bg-linear-to-tr from-rose-950/20 via-slate-900 to-cyan-950/20 border border-rose-900/40 rounded-[2.5rem] p-6 sm:p-10 shadow-xl">
+          <div className="relative overflow-hidden bg-gradient-to-tr from-rose-950/20 via-slate-900 to-cyan-950/20 border border-rose-900/40 rounded-[2.5rem] p-6 sm:p-10 shadow-xl">
             <div className="absolute top-0 right-0 w-96 h-96 bg-rose-500/5 rounded-full filter blur-3xl pointer-events-none" />
             
             <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="flex-1 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-rose-950/50 text-rose-450 text-xs font-bold border border-rose-900/40">
+                <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full bg-rose-950/50 text-rose-400 text-xs font-bold border border-rose-900/40">
                   <SparklesIcon />
+                  <span>Sincere Content</span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-snug">
                   Keep This Project Free by Supporting our Creators
                 </h2>
-                <p className="mt-4 text-sm sm:text-base text-slate-350 leading-relaxed max-w-2xl">
+                <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
                   We build and run clean, beautiful spiritual utilities for the Global Muslim Community with zero annoying ads or subscription walls. 
                   You can keep our project operational by following our media spaces. We host beautiful HD video reminders, Quran translations, and serene aesthetic designs.
                 </p>
                 
-                <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-medium text-slate-450">
-                  <a href="https://www.youtube.com/@AIROFISLAM1" target="_blank" rel="noopener noreferrer" className="text-rose-450 hover:text-rose-350 font-bold transition-colors flex items-center gap-1">
+                <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-5 text-xs font-semibold">
+                  <a href="https://www.youtube.com/@AIROFISLAM1" target="_blank" rel="noopener noreferrer" className="text-red-500 hover:text-red-400 transition-colors flex items-center gap-1">
                     <YoutubeIcon className="w-4 h-4" /> YouTube
                   </a>
-                  <a href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi" target="_blank" rel="noopener noreferrer" className="text-pink-400 hover:text-pink-300 font-bold transition-colors flex items-center gap-1">
-                    <InstagramIcon className="w-4 h-4" /> Instagram
+                  <a href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi" target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-400 transition-colors flex items-center gap-1.5">
+                    <InstagramIcon className="w-4 h-4" /> Instagram Page
                   </a>
                 </div>
               </div>
@@ -584,8 +663,8 @@ export default function Home() {
 
               {/* CARD 3: Video Support */}
               <div className="p-6 bg-slate-900/50 backdrop-blur-md border border-slate-800/50 rounded-3xl shadow-sm hover:shadow-md transition-all group">
-                <div className="w-12 h-12 bg-slate-850 text-rose-450 rounded-2xl flex items-center justify-center mb-5 border border-slate-750 transition-all group-hover:scale-110">
-                  <YoutubeIcon className="w-6 h-6" />
+                <div className="w-12 h-12 bg-slate-850 text-rose-500 rounded-2xl flex items-center justify-center mb-5 border border-slate-750 transition-all group-hover:scale-110">
+                  <YoutubeIcon className="w-6 h-6 text-rose-500" />
                 </div>
                 <div className="w-full flex justify-between items-baseline">
                   <h3 className="text-lg font-bold text-white mb-2">Air Of Islam Media</h3>
@@ -610,7 +689,7 @@ export default function Home() {
         </section>
 
         {/* HOW IT WORKS */}
-        <section id="how-it-works" className="mb-24 scroll-mt-20 py-12 relative overflow-hidden bg-linear-to-r from-sky-950/15 to-teal-950/15 rounded-[2.5rem] border border-slate-850 px-6 sm:px-12">
+        <section id="how-it-works" className="mb-24 scroll-mt-20 py-12 relative overflow-hidden bg-gradient-to-r from-sky-950/15 to-teal-950/15 rounded-[2.5rem] border border-slate-850 px-6 sm:px-12">
           
           <div className="text-center mb-12">
             <span className="text-xs font-bold tracking-wider uppercase text-cyan-400">Simple 3-Step Process</span>
@@ -693,7 +772,7 @@ export default function Home() {
                     </div>
                     <button
                       onClick={() => handleToggleFavorite(dua.id)}
-                      className="p-1.5 rounded-lg hover:bg-rose-950/30 transition-colors"
+                      className="p-1.5 rounded-lg hover:bg-rose-950/30 transition-colors cursor-pointer"
                       title="Favorite"
                     >
                       {savedDuas.includes(dua.id) ? <HeartFilledIcon /> : <HeartEmptyIcon />}
@@ -723,9 +802,27 @@ export default function Home() {
                   </p>
                 </div>
 
+                {/* COPY & SHARE ACTION ROW - Directly Above the Source/Social Support Tray */}
+                <div className="mb-4 pt-1 flex items-center gap-2.5">
+                  <button
+                    onClick={() => handleCopyDua(dua)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-bold rounded-xl text-cyan-300 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:text-cyan-200 transition-all duration-200 active:scale-95 cursor-pointer shadow-sm"
+                  >
+                    <CopyIcon className="w-3.5 h-3.5" />
+                    <span>Copy Dua</span>
+                  </button>
+                  <button
+                    onClick={() => handleShareDua(dua)}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-bold rounded-xl text-sky-300 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:text-sky-200 transition-all duration-200 active:scale-95 cursor-pointer shadow-sm"
+                  >
+                    <ShareIcon className="w-3.5 h-3.5" />
+                    <span>Share</span>
+                  </button>
+                </div>
+
                 {/* Social Support Tray on Cards */}
                 <div className="pt-4 border-t border-slate-800/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-xs">
-                  <div className="flex items-center gap-1.5 px-3 py-2 bg-amber-450/10 text-amber-300 rounded-xl border border-amber-450/30 font-extrabold tracking-wide self-start shadow-[0_0_12px_rgba(251,191,36,0.15)]">
+                  <div className="flex items-center gap-1.5 px-3 py-2 bg-amber-450/10 text-amber-300 rounded-xl border border-amber-500/30 font-extrabold tracking-wide self-start shadow-[0_0_12px_rgba(251,191,36,0.15)]">
                     <span>📖 Source:</span>
                     <span className="underline decoration-amber-500/50 underline-offset-2">{dua.source}</span>
                   </div>
@@ -745,7 +842,7 @@ export default function Home() {
                       href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 bg-linear-to-r from-pink-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-extrabold px-3 py-1.5 rounded-xl transition-all text-[11px]"
+                      className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 text-white font-extrabold px-3 py-1.5 rounded-xl transition-all text-[11px]"
                       onClick={() => showToast('Opening Air of Islam Instagram!')}
                     >
                       <InstagramIcon className="w-3.5 h-3.5" /> Follow
@@ -793,7 +890,7 @@ export default function Home() {
                     onBlur={() => setTimeout(() => setShowSuggestions(false), 250)}
                     onChange={(e) => { setDirectorySearch(e.target.value); setVisibleCount(6); }}
                     placeholder="Search titles, meaning, or source..."
-                    className="w-full bg-transparent border-none outline-none focus:ring-0 text-xs sm:text-sm text-slate-100 placeholder-slate-500"
+                    className="w-full bg-transparent border-none outline-none focus:ring-0 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none"
                   />
                   {directorySearch && (
                     <button 
@@ -854,7 +951,7 @@ export default function Home() {
                     <button
                       key={cat}
                       onClick={() => handleDirectoryCategorySelect(cat)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                         directoryCategory === cat
                           ? 'bg-cyan-600 text-white shadow-md'
                           : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
@@ -891,7 +988,7 @@ export default function Home() {
                         </div>
                         <button
                           onClick={() => handleToggleFavorite(dua.id)}
-                          className="p-1 rounded-lg hover:bg-rose-950/30 transition-colors"
+                          className="p-1 rounded-lg hover:bg-rose-950/30 transition-colors cursor-pointer"
                           title="Favorite"
                         >
                           {savedDuas.includes(dua.id) ? <HeartFilledIcon /> : <HeartEmptyIcon />}
@@ -921,8 +1018,26 @@ export default function Home() {
                       </p>
                     </div>
 
+                    {/* ACTIONS BLOCK - Copy & Share placed explicitly above Source metadata */}
+                    <div className="mb-4 pt-1 flex items-center gap-2">
+                      <button
+                        onClick={() => handleCopyDua(dua)}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] font-extrabold rounded-xl text-cyan-300 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-750 transition-all duration-200 active:scale-95 cursor-pointer shadow-xs"
+                      >
+                        <CopyIcon className="w-3 h-3" />
+                        <span>Copy</span>
+                      </button>
+                      <button
+                        onClick={() => handleShareDua(dua)}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] font-extrabold rounded-xl text-sky-300 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-750 transition-all duration-200 active:scale-95 cursor-pointer shadow-xs"
+                      >
+                        <ShareIcon className="w-3 h-3" />
+                        <span>Share</span>
+                      </button>
+                    </div>
+
                     <div className="pt-3.5 border-t border-slate-850 flex flex-col gap-2.5 text-[10px]">
-                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-amber-450/10 text-amber-300 rounded-lg border border-amber-450/25 font-bold tracking-wide self-start w-full shadow-[0_0_12px_rgba(251,191,36,0.15)]">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-amber-450/10 text-amber-300 rounded-lg border border-amber-500/25 font-bold tracking-wide self-start w-full shadow-[0_0_12px_rgba(251,191,36,0.15)]">
                         <span>📖 Source:</span>
                         <span className="truncate underline decoration-amber-500/50">{dua.source}</span>
                       </div>
@@ -941,9 +1056,9 @@ export default function Home() {
                           href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1 bg-linear-to-r from-pink-600 to-amber-500 hover:from-pink-500 hover:to-amber-450 text-white font-extrabold py-1.5 rounded-lg transition-all"
+                          className="inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-pink-600 to-amber-500 hover:from-pink-500 hover:to-amber-450 text-white font-extrabold py-1.5 rounded-lg transition-all"
                         >
-                          <InstagramIcon className="w-3 h-3" /> Instagram
+                          <InstagramIcon className="w-3.5 h-3.5" /> Instagram
                         </a>
                       </div>
                     </div>
@@ -953,7 +1068,7 @@ export default function Home() {
                 <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-16 bg-slate-950/40 rounded-2xl border border-dashed border-slate-800">
                   <span className="text-3xl">🤲</span>
                   <h4 className="text-base font-semibold text-slate-300 mt-3">No matching duas found. Try another emotion or keyword.</h4>
-                  <p className="text-xs text-slate-550 mt-1 max-w-sm mx-auto">
+                  <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
                     Try checking spelling or changing the tag categories filter tab above.
                   </p>
                   <button
@@ -971,7 +1086,7 @@ export default function Home() {
               <div className="text-center mt-10">
                 <button
                   onClick={() => setVisibleCount((prev) => prev + 6)}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:bg-slate-900 text-cyan-300 font-bold rounded-2xl text-xs sm:text-sm transition-all active:scale-95 shadow-md shadow-black"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-slate-950 border border-slate-800 hover:border-slate-700 hover:bg-slate-900 text-cyan-300 font-bold rounded-2xl text-xs sm:text-sm transition-all active:scale-95 shadow-md shadow-black cursor-pointer"
                 >
                   <SparklesIcon /> Load Next Supplications ({filteredDirectoryDuas.length - visibleCount} Remaining)
                 </button>
@@ -983,10 +1098,10 @@ export default function Home() {
 
         {/* SINCERE GUIDANCE / INTERACTIVE ETIQUETTE ADAB */}
         <section id="adab-section" className="mb-24 scroll-mt-20">
-          <div className="relative overflow-hidden bg-linear-to-r from-sky-950/10 to-teal-950/10 border border-slate-850 rounded-[2.5rem] p-6 sm:p-10 shadow-xl">
+          <div className="relative overflow-hidden bg-gradient-to-r from-sky-950/10 to-teal-950/10 border border-slate-850 rounded-[2.5rem] p-6 sm:p-10 shadow-xl">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-extrabold text-white">Etiquette of Dua (Adab)</h2>
-              <p className="text-slate-450 mt-2">Short guide to structure, physical, and spiritual preparation when invoking Allah.</p>
+              <p className="text-slate-400 mt-2">Short guide to structure, physical, and spiritual preparation when invoking Allah.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -994,7 +1109,7 @@ export default function Home() {
                 <button
                   key={tab}
                   onClick={() => setActiveAdabTab(tab)}
-                  className={`p-4 rounded-2xl text-sm font-semibold ${activeAdabTab === tab ? 'bg-cyan-600 text-white' : 'bg-slate-950 text-slate-300'} transition-all`}
+                  className={`p-4 rounded-2xl text-sm font-semibold cursor-pointer ${activeAdabTab === tab ? 'bg-cyan-600 text-white' : 'bg-slate-950 text-slate-300'} transition-all`}
                 >
                   {ADAB_SECTIONS[tab].emoji} {ADAB_SECTIONS[tab].title}
                 </button>
@@ -1004,9 +1119,9 @@ export default function Home() {
 
             <div className="mt-6 p-6 bg-slate-900/60 rounded-2xl border border-slate-800">
               <h3 className="text-lg font-bold text-white">{ADAB_SECTIONS[activeAdabTab].title}</h3>
-              <ul className="list-disc ml-5 mt-3 text-slate-300">
+              <ul className="list-disc ml-5 mt-3 text-slate-300 space-y-2">
                 {ADAB_SECTIONS[activeAdabTab].bullets.map((b, i) => (
-                  <li key={i} className="mb-1">{b}</li>
+                  <li key={i} className="leading-relaxed text-sm">{b}</li>
                 ))}
               </ul>
             </div>
@@ -1020,7 +1135,7 @@ export default function Home() {
             <h2 className="text-3xl font-extrabold text-white">
               Frequently Asked Questions
             </h2>
-            <p className="text-slate-450 mt-2 text-sm sm:text-base">
+            <p className="text-slate-400 mt-2 text-sm sm:text-base">
               Verified details on sources, safety, and functionality.
             </p>
           </div>
@@ -1046,7 +1161,7 @@ export default function Home() {
               >
                 <button
                   onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-                  className="w-full text-left px-6 py-4 flex items-center justify-between font-semibold text-slate-200 hover:text-cyan-400 transition-colors focus:outline-none"
+                  className="w-full text-left px-6 py-4 flex items-center justify-between font-semibold text-slate-200 hover:text-cyan-400 transition-colors focus:outline-none cursor-pointer"
                 >
                   <span>{faq.q}</span>
                   <span className="text-cyan-500 text-lg font-bold">
@@ -1064,7 +1179,7 @@ export default function Home() {
         </section>
 
         {/* BOTTOM FINAL CALL TO ACTION (CTA) */}
-        <section className="relative overflow-hidden bg-linear-to-r from-rose-600 via-rose-650 to-pink-600 text-white rounded-[2.5rem] p-8 sm:p-12 text-center shadow-2xl">
+        <section className="relative overflow-hidden bg-gradient-to-r from-rose-600 via-rose-500 to-pink-600 text-white rounded-[2.5rem] p-8 sm:p-12 text-center shadow-2xl">
           <h3 className="text-xl font-extrabold mb-2">Support the Project</h3>
           <p className="text-sm text-slate-200 mb-4">If this tool benefited you, consider subscribing to our channel and sharing with friends.</p>
           <a href="https://www.youtube.com/@AIROFISLAM1?sub_confirmation=1" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl font-bold hover:bg-white/20">
@@ -1075,8 +1190,9 @@ export default function Home() {
       </main>
 
       {toastMessage && (
-        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/90 px-4 py-3 text-sm text-white shadow-2xl backdrop-blur-md animate-fade-in">
-          {toastMessage}
+        <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-slate-900/95 px-5 py-3.5 text-xs sm:text-sm text-white shadow-2xl border border-slate-850 backdrop-blur-md animate-fade-in flex items-center gap-2 max-w-[90vw] text-center justify-center font-medium">
+          <span>✨</span>
+          <span>{toastMessage}</span>
         </div>
       )}
 
@@ -1091,12 +1207,12 @@ export default function Home() {
                 <div className="p-2 bg-slate-900 rounded-xl">
                   <LogoIcon />
                 </div>
-                <span className="text-xl font-extrabold tracking-tight bg-linear-to-r from-sky-400 to-cyan-200 bg-clip-text text-transparent">
+                <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 to-cyan-200 bg-clip-text text-transparent">
                   Dua Finder
                 </span>
               </div>
               <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-                Developing visual and accessible tools for the Muslim community worldwide. Curated from verified Quranic and Sunnah sources. Built in partnership with <strong>Air Of Islam</strong>.
+                Developing visual and accessible tools for the Muslim community worldwide. Sourced from verified Quranic and Sunnah references. Built in partnership with <strong>Air Of Islam</strong>.
               </p>
             </div>
 
@@ -1113,9 +1229,9 @@ export default function Home() {
 
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">Connect & Legal</h4>
-              <ul className="space-y-2 text-sm text-slate-400">
-                <li><a href="https://www.youtube.com/@AIROFISLAM1" target="_blank" rel="noopener noreferrer" className="hover:text-rose-450 font-bold transition-colors flex items-center gap-1.5"><YoutubeIcon className="w-3.5 h-3.5" /> YouTube Channel</a></li>
-                <li><a href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi" target="_blank" rel="noopener noreferrer" className="hover:text-pink-450 font-bold transition-colors flex items-center gap-1.5"><InstagramIcon className="w-3.5 h-3.5" /> Instagram Page</a></li>
+              <ul className="space-y-3.5 text-sm text-slate-400">
+                <li><a href="https://www.youtube.com/@AIROFISLAM1" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 font-bold transition-colors flex items-center gap-1.5"><YoutubeIcon className="w-3.5 h-3.5 text-red-500" /> YouTube Channel</a></li>
+                <li><a href="https://www.instagram.com/airofislam?igsh=ZWx6anM5a25xdmdi" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 font-bold transition-colors flex items-center gap-1.5"><InstagramIcon className="w-3.5 h-3.5 text-pink-500" /> Instagram Page</a></li>
                 <li><span className="cursor-pointer hover:text-cyan-400 transition-colors" onClick={() => showToast('Privacy Policy: We do not track or save your queries.')}>Privacy Policy</span></li>
                 <li><span className="cursor-pointer hover:text-cyan-400 transition-colors" onClick={() => showToast('Terms of Use: Free for everyone.')}>Terms & Use</span></li>
               </ul>
