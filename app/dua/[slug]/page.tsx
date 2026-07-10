@@ -32,10 +32,15 @@ export async function generateMetadata({
       title: "Dua Not Found | Dua Finder",
     };
   }
+  const baseUrl = "https://dua-finder-puce.vercel.app";
 
   return {
     title: `${dua.title} | Dua Finder`,
     description: dua.translation,
+    alternates: {
+    canonical: `${baseUrl}/dua/${dua.slug}`,
+  },
+
     keywords: [
       dua.category,
       "dua",
@@ -50,6 +55,12 @@ export async function generateMetadata({
       description: dua.translation,
       type: "article",
     },
+    twitter: {
+    card: "summary_large_image",
+    title: `${dua.title} | Dua Finder`,
+    description: dua.translation,
+  },
+
   };
 }
 
@@ -83,9 +94,12 @@ export default async function DuaPage({
 
         <div className="mt-10 rounded-3xl border border-slate-800 bg-slate-900/50 backdrop-blur-xl p-8 shadow-2xl">
 
-          <div className="inline-block rounded-full bg-cyan-500/20 px-4 py-2 text-cyan-300 font-semibold">
-            {dua.category}
-          </div>
+          <Link
+  href={`/category/${encodeURIComponent(dua.category)}`}
+  className="inline-block rounded-full bg-cyan-500/20 px-4 py-2 text-cyan-300 font-semibold hover:bg-cyan-500/30 transition"
+>
+  {dua.category}
+</Link>
 
           <h1 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
             {dua.title}
@@ -268,22 +282,24 @@ export default async function DuaPage({
       </div>
 
       <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: dua.title,
-            description: dua.translation,
-            inLanguage: "ar",
-            about: dua.category,
-            author: {
-              "@type": "Organization",
-              name: "Dua Finder",
-            },
-          }),
-        }}
-      />
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: dua.title,
+      description: dua.translation,
+      url: `https://dua-finder-puce.vercel.app/dua/${dua.slug}`,
+      inLanguage: "ar",
+      about: dua.category,
+      publisher: {
+        "@type": "Organization",
+        name: "Dua Finder",
+        url: "https://dua-finder-puce.vercel.app",
+      },
+    }),
+  }}
+/>
 
     </main>
   );
