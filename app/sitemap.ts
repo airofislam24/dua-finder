@@ -4,14 +4,9 @@ import { getDuas } from "@/lib/dua";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dua-finder-puce.vercel.app";
 
-  const duas = getDuas();
-
-  const duaPages = duas.map((dua) => ({
-    url: `${baseUrl}/dua/${dua.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+  const uniqueDuas = Array.from(
+    new Map(getDuas().map((dua) => [dua.slug, dua])).values()
+  );
 
   return [
     {
@@ -20,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1,
     },
-    ...duaPages,
+    ...uniqueDuas.map((dua) => ({
+      url: `${baseUrl}/dua/${dua.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
   ];
 }
