@@ -4,6 +4,8 @@ import { getDuas } from "@/lib/dua";
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://dua-finder-puce.vercel.app";
 
+  const lastModified = new Date("2026-07-12");
+
   const uniqueDuas = Array.from(
     new Map(getDuas().map((dua) => [dua.slug, dua])).values()
   );
@@ -11,14 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
+      lastModified,
       priority: 1,
     },
     ...uniqueDuas.map((dua) => ({
       url: `${baseUrl}/dua/${dua.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
+      lastModified,
       priority: 0.8,
     })),
   ];
